@@ -1,5 +1,8 @@
 package Puzzle
 
+import com.sun.org.apache.xml.internal.security.Init
+import javafx.fxml.Initializable
+
 var puzzle: Array<Array<Char>> = arrayOf()
 var puzzlefill: Array<Char> = arrayOf()
 
@@ -13,8 +16,10 @@ fun initializePuzzle(r: Int, c: Int) {
 }
 
 fun fillwords(word: String, orint: Int) {
-    val row: Int = (0..puzzle.size - word.length).random()
-    val col: Int = (0..puzzle[0].size - word.length).random()
+//    TODO: How to set a variable to initialise later
+    var row: Int = 0
+    var col: Int = 0
+
 
     if (orint == 0 && horizontalCheck(word, row, col)) {
         for (i in word.indices) {
@@ -33,6 +38,26 @@ fun fillwords(word: String, orint: Int) {
             puzzle[row + i][col - i] = word[i]
         }
     }
+}
+
+fun selectRC(orint: Int, word: String): Array<Int> {
+    val RC: Array<Int> = arrayOf(0, 0)
+
+    if (orint == 0) {
+        RC[0] = (0..puzzle.size - 1).random()
+        RC[1] = (0..puzzle[0].size - word.length).random()
+    } else if (orint == 1) {
+        RC[0] = (0..puzzle.size - word.length).random()
+        RC[1] = (0..puzzle[0].size - 1).random()
+    } else if (orint == 2) {
+        RC[0] = (0..puzzle.size - word.length).random()
+        RC[1] = (0..puzzle[0].size - word.length).random()
+    } else if (orint == 3) {
+        RC[0] = (0..puzzle.size - word.length).random()
+        RC[1] = ((0 + word.length)..puzzle[0].size - 1).random()
+    }
+
+    return RC
 }
 
 fun horizontalCheck(s: String, i: Int, j: Int): Boolean {
