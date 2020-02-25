@@ -1,8 +1,5 @@
 package Puzzle
 
-import com.sun.org.apache.xml.internal.security.Init
-import javafx.fxml.Initializable
-
 var puzzle: Array<Array<Char>> = arrayOf()
 var puzzlefill: Array<Char> = arrayOf()
 
@@ -34,6 +31,18 @@ fun fillwords(word: String, orint: Int) {
     } else if (orint == 3 && verticalcheck(word, RC[0], RC[1])) {
         for (i in word.indices) {
             puzzle[RC[0] + i][RC[1] - i] = word[i]
+        }
+    }
+
+    fillSpaces()
+}
+
+fun fillSpaces() {
+    for (i in puzzle.indices) {
+        for (j in puzzle[0].indices) {
+            if (puzzle[i][j] == '.') {
+                puzzle[i][j] = ('a'..'z').random()
+            }
         }
     }
 }
