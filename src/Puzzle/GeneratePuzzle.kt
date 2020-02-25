@@ -17,29 +17,28 @@ fun initializePuzzle(r: Int, c: Int) {
 
 fun fillwords(word: String, orint: Int) {
 //    TODO: How to set a variable to initialise later
-    var row: Int = 0
-    var col: Int = 0
+    val RC: Array<Int> = selectRC(orint, word)
 
-
-    if (orint == 0 && horizontalCheck(word, row, col)) {
+    if (orint == 0 && horizontalCheck(word, RC[0], RC[1])) {
         for (i in word.indices) {
-            puzzle[row][col + i] = word[i]
+            puzzle[RC[0]][RC[1] + i] = word[i]
         }
-    } else if (orint == 1 && verticalcheck(word, row, col)) {
+    } else if (orint == 1 && verticalcheck(word, RC[0], RC[1])) {
         for (i in word.indices) {
-            puzzle[row + i][col] = word[i]
+            puzzle[RC[0] + i][RC[1]] = word[i]
         }
-    } else if (orint == 2 && diagonalcheck(word, row, col)) {
+    } else if (orint == 2 && diagonalcheck(word, RC[0], RC[1])) {
         for (i in word.indices) {
-            puzzle[row + i][col + i] = word[i]
+            puzzle[RC[0] + i][RC[1] + i] = word[i]
         }
-    } else if (orint == 3 && verticalcheck(word, row, col)) {
+    } else if (orint == 3 && verticalcheck(word, RC[0], RC[1])) {
         for (i in word.indices) {
-            puzzle[row + i][col - i] = word[i]
+            puzzle[RC[0] + i][RC[1] - i] = word[i]
         }
     }
 }
 
+//0: row,  1:column
 fun selectRC(orint: Int, word: String): Array<Int> {
     val RC: Array<Int> = arrayOf(0, 0)
 
