@@ -13,7 +13,6 @@ fun initializePuzzle(r: Int, c: Int) {
 }
 
 fun fillwords(word: String, orint: Int) {
-//    TODO: How to set a variable to initialise later
     val RC: Array<Int> = selectRC(orint, word)
 
     if (orint == 0 && horizontalCheck(word, RC[0], RC[1])) {
