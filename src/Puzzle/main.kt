@@ -9,7 +9,7 @@ fun main(args: Array<String>) {
     create.fillwords("fahad", 3)
     create.fillSpaces()
     create.printPuzzle()
-    create.inpuzzle()
+//    create.inpuzzle()
 
     println()
     val solver: puzzleSolver = puzzleSolver()
