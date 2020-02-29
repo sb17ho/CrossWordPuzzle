@@ -145,10 +145,15 @@ class PuzzleCreate {
 
     fun printPuzzle() {
         for (i in 0 until puzzle.size) {
+            print("${i+1}\t")
             for (j in 0 until puzzle.size) {
                 print(puzzle[i][j] + " ")
             }
             println()
+        }
+        print("\t")
+        for (j in 0 until puzzle.size) {
+            print("${j+1} ")
         }
     }
 

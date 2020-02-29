@@ -7,11 +7,11 @@ fun main(args: Array<String>) {
     create.fillwords("param", 1)
     create.fillwords("shruti", 2)
     create.fillwords("fahad", 3)
-    create.fillSpaces()
+//    create.fillSpaces()
     create.printPuzzle()
 //    create.inpuzzle()
 
     println()
     val solver: puzzleSolver = puzzleSolver()
-    solver.found()
+    solver.found(create.puzzle)
 }
