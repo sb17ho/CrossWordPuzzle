@@ -13,5 +13,5 @@ fun main(args: Array<String>) {
 
     println()
     val solver: puzzleSolver = puzzleSolver()
-    solver.found(create.puzzle)
+    solver.found(create.puzzle, create.inpuzzle)
 }
