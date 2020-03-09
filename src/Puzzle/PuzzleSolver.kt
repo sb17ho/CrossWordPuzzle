@@ -8,15 +8,16 @@ class puzzleSolver {
     var totalCount: Int = 0
 
     //User will be displayed "Found a Word?", if yes where, else loop
-    fun found(puzzle: Array<Array<Char>>, inpuzzle: Array<String>) {
+    fun found(puzzle: Array<Array<Char>>, inpuzzle: Array<String>, create: PuzzleCreate) {
         val found: Boolean = false
 
-        println("_________Game Started________\n\nWrite Quit Anytime to Exit the Game and see the answers\n\nFound a word? Yes to continue")
+        println("\n_________________Game Started_______________\n\nWrite Quit Anytime to Exit the Game and see the answers\n\nFound a word? Yes to continue")
         while (!found) {
             val state: String = scanner.next()
             if (state == "yes") {
                 where(puzzle, inpuzzle)
-                println("Found a Word?")
+                create.printPuzzle()
+                println("\nFound a Word?")
             } else if (state == "quit") {
                 println("Player quite the game!")
 
