@@ -44,17 +44,47 @@ class puzzleSolver {
         println("Please specify the direction\n1) Vertical\n2) Horizontal\n3) Diagonal\n4) Reverse Diagonal\n")
         val direction: Int = scanner.nextInt()
 
-        println("Please specify the X1 (i) and Y1 (j)\n")
-        val x1: Int = scanner.nextInt() - 1
-        val y1: Int = scanner.nextInt() - 1
+        var x: Int = 0
+        var y: Int = 0
+        var length: Int = 0
 
-        println("Please specify the X2 (i)  and Y2 (j)\n")
-        val x2: Int = scanner.nextInt() - 1
-        val y2: Int = scanner.nextInt() - 1
+        if (direction == 1) { //vertical
+            println("Please specify the x (i) and y (j) coordinate")
+            x = scanner.nextInt()
+            y = scanner.nextInt()
+
+            println("Specify the length of the word")
+            length = scanner.nextInt()
+
+        } else if (direction == 2) { //horizontal
+            println("Please specify the x (i) and y (j) coordinate")
+            x = scanner.nextInt()
+            y = scanner.nextInt()
+
+            println("Specify the length of the word")
+            length = scanner.nextInt()
+
+        } else { //diagonal
+            println("Please specify the x (i) and y (j) coordinate")
+            x = scanner.nextInt()
+            y = scanner.nextInt()
+
+            println("Specify the length of the word")
+            length = scanner.nextInt()
+
+        }
+//
+//        println("Please specify the X1 (i) and Y1 (j)\n")
+//        val x1: Int = scanner.nextInt() - 1
+//        val y1: Int = scanner.nextInt() - 1
+//
+//        println("Please specify the X2 (i)  and Y2 (j)\n")
+//        val x2: Int = scanner.nextInt() - 1
+//        val y2: Int = scanner.nextInt() - 1
 
         println("Please write the word found\n")
         val wordFound: String = scanner.next()
-        verify(x1, x2, y1, y2, direction, wordFound, puzzle, inpuzzle)
+        verify(x, y, length, direction, wordFound, puzzle, inpuzzle)
 
         //TODO: Take input as string and remove the white spaces and pick the coordinate from them
         //TODO: Check for invalid input
@@ -63,40 +93,51 @@ class puzzleSolver {
 
     //TODO: Reverse Diagonal check not working
     fun verify(
-        x1: Int,
-        x2: Int,
-        y1: Int,
-        y2: Int,
+        x: Int,
+        y: Int,
+        length: Int,
         direction: Int,
         wordFound: String,
         puzzle: Array<Array<Char>>,
         inpuzzle: Array<String>
     ) {
+
         val check: String = wordFound
         var result: String = ""
+        var count: Int = 0
 
         if (direction == 1) {
-            val j: Int = y1
-            for (i in x1..x2) {
-                result += puzzle[i][j]
-            }
-        } else if (direction == 2) {
-            val i: Int = x1
-            for (j in y1..y2) {
-                result += puzzle[i][j]
-            }
-        } else if (direction == 3) {
-            var i: Int = x1
-            for (j in y1..y2) {
+            val j: Int = y
+            var i: Int = x
+            while (count <= length) {
                 result += puzzle[i++][j]
+                count++
             }
-        } else if (direction == 4) {
-            for (i in x1..x2) {
-                for (j in y2 downTo y1) {
-                    result += puzzle[i][j]
-                }
+        }// Vertical
+        else if (direction == 2) {
+            val i: Int = x
+            var j: Int = y
+            while (count <= length) {
+                result += puzzle[i][j++]
+                count++
             }
-        }
+        }//Horizontal
+        else if (direction == 3) {
+            var i: Int = x
+            var j: Int = y
+            while (count <= length) {
+                result += puzzle[i++][j++]
+                count++
+            }
+        }// diagonal
+        else if (direction == 4) {
+            var i: Int = x
+            var j: Int = y
+            while (count <= length) {
+                result += puzzle[i++][j--]
+                count++
+            }
+        }// reverse diagonal
 
         if (check == result) {
             println("Correct \b")
