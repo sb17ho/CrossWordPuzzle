@@ -84,7 +84,7 @@ class puzzleSolver {
 
         println("Please write the word found\n")
         val wordFound: String = scanner.next()
-        verify(x, y, length, direction, wordFound, puzzle, inpuzzle)
+        verify(x - 1, y - 1, length, direction, wordFound, puzzle, inpuzzle)
 
         //TODO: Take input as string and remove the white spaces and pick the coordinate from them
         //TODO: Check for invalid input
@@ -109,7 +109,7 @@ class puzzleSolver {
         if (direction == 1) {
             val j: Int = y
             var i: Int = x
-            while (count <= length) {
+            while (count < length) {
                 result += puzzle[i++][j]
                 count++
             }
@@ -117,7 +117,7 @@ class puzzleSolver {
         else if (direction == 2) {
             val i: Int = x
             var j: Int = y
-            while (count <= length) {
+            while (count < length) {
                 result += puzzle[i][j++]
                 count++
             }
@@ -125,7 +125,7 @@ class puzzleSolver {
         else if (direction == 3) {
             var i: Int = x
             var j: Int = y
-            while (count <= length) {
+            while (count < length) {
                 result += puzzle[i++][j++]
                 count++
             }
@@ -133,7 +133,7 @@ class puzzleSolver {
         else if (direction == 4) {
             var i: Int = x
             var j: Int = y
-            while (count <= length) {
+            while (count < length) {
                 result += puzzle[i++][j--]
                 count++
             }
