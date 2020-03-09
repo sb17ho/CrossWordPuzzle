@@ -17,22 +17,23 @@ class puzzleSolver {
         var quite: String = ""
 
         //TODO: When user writes quite then print the words found by him and what were in list
-        println("_________Game Started________\n\nWrite Quite Anytime to Exit the Game and see the answers\n\nFound a word?")
+        println("_________Game Started________\n\nWrite Quit Anytime to Exit the Game and see the answers\n\nFound a word?")
         while (!found) {
             val state: String = scanner.next()
             if (state == "yes") {
                 where(puzzle, inpuzzle)
                 println("Found a Word?")
-            } else if (state == "quite") {
+            } else if (state == "quit") {
                 println("Player quite the game!")
-                //TODO: Error here
-                if (matched == null) {
-                    println("NUll")
+                //TODO( Error here)
+                if (matched.size == 0) {
+                    println("Zero Words Found")
                 } else {
+                    println("Words Found so far")
                     for (i in matched.indices)
-                        println("Words found so far ${matched[i]}")
+                        println(matched[i])
+                    System.exit(0);
                 }
-                System.exit(0);
             } else {
                 continue
             }
@@ -57,6 +58,7 @@ class puzzleSolver {
 
         //TODO: Take input as string and remove the white spaces and pick the coordinate from them
         //TODO: Check for invalid input
+        //TODO: Try doing with length (word find)
     }
 
     //TODO: Reverse Diagonal check not working
@@ -117,7 +119,7 @@ class puzzleSolver {
 
         if (isEnd(inpuzzle)) {
             println("End of Game\nFound all $count words")
-            exitProcess(0);
+            System.exit(0);
         }
     }//Verify
 
